@@ -4,18 +4,19 @@ block content
     h1= title
     table.user_table
         tr
-            th First Name
+            th RegristeringsNummer
             th Last Name
             th Email
             th Username
             th Year of Birth
             if userid
                 th Add as Friend
+            th Edit
             th Delete
         if user_list && user_list.length > 0
             each user in user_list
                 tr
-                    td #{user.first_name}
+                    td #{user.reg_number}
                     td #{user.last_name}
                     td #{user.email}
                     td #{user.username}
@@ -34,6 +35,12 @@ block content
                                 if not_found
                                     a(href="/users/add_friend?id=#{user.id}")
                                         b Add
+                    td.center
+                       a(href="/users/edit?id=#{user.id}")
+                          span
+                             input(type='submit', id='submit', value='Edit')
+
+
                     td.center
                         a(href="/users/delete?id=#{user.id}")
                             img.icon(src="/images/delete.png")

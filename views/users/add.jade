@@ -3,24 +3,24 @@ extends ../layout
 block content
     h1 Add User
     form.user_input(action='/users', method='post')
-        label(for='first_name')
-            span First Name
-            input(type='text', name='first_name', id='first_name', required='true')
+        label(for='reg_number')
+            span RegristeringsNummer
+            input(type='text', name='RegristeringsNummer', id='reg_number', required='true', value=(user ? user.last_name : ""))
         label(for='last_name')
             span Last Name
-            input(type='text', name='last_name', id='last_name', required='true')
+            input(type='text', name='last_name', id='last_name', required='true', value=(user ? user.last_name : ""))
         label(for='email')
             span Email
-            input(type='email', name='email', id='email', required='true')
+            input(type='email', name='email', id='email', required='true', value=(user ? user.email : ""))
         label(for='username')
             span Username
-            input(type='text', name='username', id='username', required='true')
+            input(type='text', name='username', id='username', required='true', value=(user ? user.username : ""))
         label(for='password')
             span Password
-            input(type='password', name='password', id='password', required='true')
+            input(type='password', name='password', id='password', required='true', value=(user ? user.password : ""))
         label(for='birthyear')
             span Year of Birth
-            input(type='text', name='birthyear', id='birthyear', required='true')
+            input(type='text', name='birthyear', id='birthyear', required='true', value=(user ? user.birthyear : ""))
         label(for='avatar')
             span(id='avatar') Avatar
             br

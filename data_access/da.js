@@ -17,15 +17,19 @@ function connect2db() {
 function savePerson(p, cb) {
     connect2db();
     var p1 = new Person(p);
-    bcrypt.hash(p1.password, 10, function(err, hash){
-        p1.password = hash;
-        p1.save(function(err){
-            if(err) {
-                console.log("Error creating user" + err)
-            }
-            cb(err);
+    p1.update();
+    {
+        bcrypt.hash(p1.password, 10, function(err, hash){
+            p1.password = hash;
+            p1.save(function(err){
+                if(err) {
+                    console.log("Error creating user" + err)
+                }
+                cb(err);
+            });
         });
-    });
+    }
+
 }
 
 
@@ -48,6 +52,14 @@ function deleteUser(id, cb) {
        }
        cb(err);
     });
+}
+
+function updateUserById(userid, p, cb) {
+    connect2db();
+    console.log("GOING TO UPDATE USER")
+    console.log(userid);
+    Person.findByIdAndUpdate({"_id": userid},{ "last_name": p.last_name, "email": p.email});
+    console.log("UPDATED: " + userid)
 }
 
 function getAllPersons(cb) {
@@ -96,7 +108,6 @@ function addFriend(userid1, userid2, cb) {
     });
 }
 
-
 function getPersonById(userid, cb) {
     connect2db();
     Person.findOne({'_id': userid}, function(err, user){
@@ -114,6 +125,7 @@ module.exports = {
     deleteUser: deleteUser,
     getUserByUsername: getPersonByUsername,
     getUserById: getPersonById,
+    updatePersonById: updateUserById,
     addFriend: addFriend,
     getFriendsOfUser: getFriendsOfUser,
 };

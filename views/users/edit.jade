@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+    h1 Edit User
+    div
+        - console.log(user)
+        div
+    form.user_input(action='/users', method='post')
+        label(for='reg_number')
+            span RegristeringsNummer
+            input(type='text', name='reg_number', id='reg_number', required='true', value=(user ? user.reg_number : ""))
+        label(for='last_name')
+            span Last Name
+            input(type='text', name='last_name', id='last_name', required='true', value=(user ? user.last_name : ""))
+        label(for='email')
+            span Email
+            input(type='email', name='email', id='email', required='true', value=(user ? user.email : ""))
+        label(for='username')
+            span Username
+            input(type='text', name='username', id='username', required='true', value=(user ? user.username : ""))
+        label(for='password')
+            span Password
+            input(type='password', name='password', id='password', required='true', value=(user ? user.password : ""))
+        label(for='birthyear')
+            span Year of Birth
+            input(type='text', name='birthyear', id='birthyear', required='true', value=(user ? user.birthyear : ""))
+        label(for='avatar')
+            span(id='avatar') Avatar
+            br
+            input(type="radio", name="avatar", value="1.png")
+            img.avatar-icon(src="/images/avatars/1.png")
+            input(type="radio", name="avatar", value="2.png")
+            img.avatar-icon(src="/images/avatars/2.png")
+            input(type="radio", name="avatar", value="3.png")
+            img.avatar-icon(src="/images/avatars/3.png")
+            input(type="radio", name="avatar", value="4.png")
+            img.avatar-icon(src="/images/avatars/4.png")
+            br
+            input(type="radio", name="avatar", value="5.png")
+            img.avatar-icon(src="/images/avatars/5.png")
+            input(type="radio", name="avatar", value="6.png")
+            img.avatar-icon(src="/images/avatars/6.png")
+            input(type="radio", name="avatar", value="7.png")
+            img.avatar-icon(src="/images/avatars/7.png")
+            input(type="radio", name="avatar", value="8.png")
+            img.avatar-icon(src="/images/avatars/8.png")
+            br
+            input(type="radio", name="avatar", value="9.png")
+            img.avatar-icon(src="/images/avatars/9.png")
+            input(type="radio", name="avatar", value="10.png")
+            img.avatar-icon(src="/images/avatars/10.png")
+            input(type="radio", name="avatar", value="11.png")
+            img.avatar-icon(src="/images/avatars/11.png")
+            input(type="radio", name="avatar", value="12.png")
+            img.avatar-icon(src="/images/avatars/12.png")
+        label.control-label(for='edit')
+            span
+            input(type='submit', id='edit', value='Edit')

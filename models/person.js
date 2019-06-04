@@ -11,7 +11,8 @@ const PersonSchema = new Schema({
     password: String,
     birthyear: Number,
     avatar: String,
-    friends: [String]
+    friends: [String],
+    reg_number: String
 }, { collection: 'persons' });
 
 // Create model

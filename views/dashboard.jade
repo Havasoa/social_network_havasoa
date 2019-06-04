@@ -1,10 +1,10 @@
 extends layout
 
 block content
-    h1 Welcome #{user.first_name}
+    h1 Welcome #{user.reg_number}
     img(src="/images/avatars/#{user.avatar}")
     p Info about you:
-        p First Name: #{user.first_name}
+        p RegristeringsNummer: #{user.reg_number}
         p Last Name: #{user.last_name}
         p Email: #{user.email}
         p Username: #{user.username}
@@ -15,9 +15,9 @@ block content
         tr
             th Image
             th Name
-        each friend in friends
+        each friend in user.friends
             tr
                 td
                     img.avatar-icon(src="/images/avatars/#{friend.avatar}")
                 td
-                    p #{friend.first_name} #{friend.last_name}
+                    p #{friend.reg_number} #{friend.last_name}
